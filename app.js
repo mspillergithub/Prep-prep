@@ -1,0 +1,14 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".site-nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+  const current = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".site-nav a").forEach((link) => {
+    if (link.getAttribute("href") === current) link.setAttribute("aria-current", "page");
+  });
+});
